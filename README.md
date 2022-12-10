@@ -28,21 +28,28 @@ If your not comfortable with Git, the linked website is a useful tool to sharpen
 
 # Get Started
 <!--Docker install --> 
-## Docker and Docker Desktop Install
+### Docker and Docker Desktop Install
 It is necessary to install Docker and it is optional to install Docker Desktop. I would recommend installing Docker Desktop because the GUI makes it easier to manage and visualize all docker content on your machine.
 - [Docker Installation](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker Desktop Installation](https://docs.docker.com/desktop/install/ubuntu/)
 <!-- install git clone repo/ make a branch-->
-# Git
+### Git
 1. [Git Installation] (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 2. [SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 3. [Add SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 4. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the **ros_noetic** repository
 5. [Make a branch](https://www.atlassian.com/git/tutorials/using-branches/git-checkout) off of the main branch and use your **first name** as the name
 <!-- Setup commands--> 
-# Preparation Commands
-This sequence of commands are used to install the appropriate drivers for your GPU.
+### Build Docker 
+Click hyper-link if you would like to learn more about [docker build](https://docs.docker.com/engine/reference/commandline/build/). **NOTE** if changes are made to the Dockerfile, you must re-build the image to express the changes.
+1. Enter directory that contains the docker file
+    ```cd ros-noetic-docker/Docker/```
+2. ```sudo docker build -t ros-noetic .```
+### Run Docker Container
+1. ```xhost +```
+2. ```sudo docker run -it --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --volume="/home/ros-noetic-docker/catkin_ws:/ws" osrf/ros:noetic-desktop-full ---name ros-noetic-docker```
 ``` ```
+sudo docker run -it --net=host --gpus all --env="NVIDIA_DRIVER_CAPABILITIES=all" --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp.X11-unix:rw" --volume="/home/ros-noetic-docker/catkin_ws:/ws" ros-noetic bash
 <!-- Docker Run Command-->
 <!-- Docker container exec -->
 <!--Useful Docker Commands --> 
