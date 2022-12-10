@@ -47,9 +47,21 @@ Click hyper-link if you would like to learn more about [docker build](https://do
 2. ```sudo docker build -t ros-noetic .```
 ### Run Docker Container
 1. ```xhost +```
-2. ```sudo docker run -it --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --volume="/home/ros-noetic-docker/catkin_ws:/ws" osrf/ros:noetic-desktop-full ---name ros-noetic-docker```
-``` ```
-sudo docker run -it --net=host --gpus all --env="NVIDIA_DRIVER_CAPABILITIES=all" --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp.X11-unix:rw" --volume="/home/ros-noetic-docker/catkin_ws:/ws" ros-noetic bash
+2. ```sudo docker run --name ros-noetic -it --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp.X11-unix:rw" --volume="/home/ros-noetic-docker/catkin_ws:/ws" ros-noetic```
+3. Check the container is running
+    - Enter new terminal
+    - ```sudo docker container ls```
+    - You should see the container listed
+    ![image](https://user-images.githubusercontent.com/92492605/206874844-6b9855a8-5b29-4aa3-bd4d-e69eab89a3b3.png)
+    
+### First time using container
+1. Run build catkin environment
+    - In docker container:
+        - ```cd ws```
+        - ```catkin_make```
+
+
+
 <!-- Docker Run Command-->
 <!-- Docker container exec -->
 <!--Useful Docker Commands --> 
